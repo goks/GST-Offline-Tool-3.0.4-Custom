@@ -1,0 +1,38 @@
+<br>
+<form name="mstrdashboard" novalidate="" data-ng-submit="getmstrUploadedDetails()" ng-init="forlabel(formNum)">
+    <div class="tabpane">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Select the details of file which you have downloaded from GST portal</h4>
+                <hr>
+            </div>
+        </div>
+
+        <div class="rettbl-format">
+            <div class="row">
+                <div class="col-sm-4 col-xs-12"
+                    data-ng-class="{'has-error': mstrdashboard.$submitted && ( mstrdashboard.userGstin.$error.required || mstrdashboard.userGstin.$error.pattern),'has-success': mstrdashboard.$submitted && mstrdashboard.userGstin.$valid }">
+                    <label for="userGstin" class="reg m-cir"><b>{{nameAsPerFormSelected()}}</b></label>
+                    <input type="text" name="userGstin" data-ng-model="userGstin" class="form-control"
+                        ng-change="onGstinChange()" maxlength="{{::validations.maxlength.gstin}}"
+                        data-ng-model-options="{updateOn:'blur'}" data-ng-required="true" data-ng-disabled="true" />
+                    <span class="err" data-ng-show="mstrdashboard.$submitted && mstrdashboard.userGstin.$error.required"
+                        data-ng-bind="trans.ERR_MANDATORY"></span>
+                    <span class="err"
+                        data-ng-show="mstrdashboard.$submitted && userGstin && mstrdashboard.userGstin.$error.pattern"
+                        data-ng-bind="trans.ERR_INV_GSTN"></span>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 text-right next-tab-nav">
+                    <button type="button" class="btn btn-default" data-ng-bind="trans.LBL_BACK"
+                        data-ng-click="page('/gstr/home')">Back</button>
+                    <button type="submit" class="btn btn-primary accpt" data-ng-bind="trans.BTN_PROCEED"
+                        data-toggle="tooltip" title="Summary">Proceed</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
